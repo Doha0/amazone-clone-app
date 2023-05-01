@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Header.css'
 import logo from '../../images/Logo.svg'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const Header = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user);
+
+    const handelLogOut = () => {
+        logOut()
+            .then((result) => { })
+            .catch(error => { console.log(error) })
+    }
+
     return (
         <div className='header'>
             <nav className="container mx-auto navbar">
@@ -18,6 +29,9 @@ const Header = () => {
                         <li><Link to='/inventory' >Inventory</Link></li>
                         <li><Link to='/login' >Login</Link></li>
                         <li><Link to='/sign-up' >SignUp</Link></li>
+                        {user && <li> <p>Welcome {user.email}</p> <button
+                            onClick={handelLogOut} className="btn btn-error">Sign Out</button>
+                        </li>}
 
                     </ul>
                 </div>
