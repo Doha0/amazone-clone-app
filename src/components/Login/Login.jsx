@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 
 const Login = () => {
+
+    const [show, setShow] = useState(false);
 
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -50,9 +52,14 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="text" name='password' className="input input-bordered" required />
-
+                            <input type={show ? "text" : "password"} name='password' className="input input-bordered" required />
                         </div>
+                        <label className="label">
+                            <p className="label-text-alt" onClick={() => setShow(!show)}  >
+                                {
+                                    show ? <span>Hide Password</span> : <span>Show Password</span>
+                                }</p>
+                        </label>
                         <div className="form-control mt-6">
                             <button className="custom-button">Login</button>
                         </div>
