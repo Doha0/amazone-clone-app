@@ -5,3 +5,7 @@
 .custom-button {
   @apply btn w-full bg-orange-200 hover:bg-orange-500 text-black rounded-ee-md border-none;
 }
+
+.page-button {
+  @apply btn bg-orange-200 hover:bg-orange-500 text-black rounded-ee-md btn-active;
+}

@@ -7,7 +7,7 @@ const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     // using location to redirect path
     const location = useLocation();
-    console.log(location);
+    // console.log(location);
 
     if (loading) {
         return <progress className="progress w-1/2"></progress>;
